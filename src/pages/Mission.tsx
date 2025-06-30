@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { ArrowRight, Heart, Users, Target, Globe, Star, Calendar } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
@@ -7,10 +8,9 @@ import { Link } from 'react-router-dom';
 
 interface TimelineItem {
   year: string;
-  month: string;
-  day: string;
   title: string;
   description: string;
+  image: string;
   type: 'milestone' | 'goal';
   status: 'completed' | 'in-progress' | 'planned';
   icon: React.ReactNode;
@@ -20,70 +20,63 @@ const Mission = () => {
   const timelineData: TimelineItem[] = [
     {
       year: '2020',
-      month: 'Jan',
-      day: '15',
       title: 'Foundation Established',
-      description: 'Started our journey with a vision to create positive change in communities worldwide.',
+      description: 'Started our journey with a vision to create positive change in communities worldwide through dedicated service.',
+      image: 'https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&w=800&q=80',
       type: 'milestone',
       status: 'completed',
       icon: <Heart className="w-5 h-5" />
     },
     {
       year: '2021',
-      month: 'Mar',
-      day: '22',
       title: 'First Community Program',
-      description: 'Launched our inaugural community outreach program, reaching 500 families in need.',
+      description: 'Launched our inaugural community outreach program, reaching 500 families in need across multiple locations.',
+      image: 'https://images.unsplash.com/photo-1517022812141-23620dba5c23?auto=format&fit=crop&w=800&q=80',
       type: 'milestone',
       status: 'completed',
       icon: <Users className="w-5 h-5" />
     },
     {
       year: '2022',
-      month: 'Jun',
-      day: '08',
       title: 'Education Initiative',
-      description: 'Expanded into education support, providing scholarships and learning resources.',
+      description: 'Expanded into education support, providing scholarships and learning resources to underprivileged students.',
+      image: 'https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=800&q=80',
       type: 'milestone',
       status: 'completed',
       icon: <Target className="w-5 h-5" />
     },
     {
       year: '2023',
-      month: 'Sep',
-      day: '12',
       title: 'Global Expansion',
-      description: 'Extended our reach to 5 countries, impacting over 10,000 lives directly.',
+      description: 'Extended our reach to 5 countries, impacting over 10,000 lives directly through various humanitarian programs.',
+      image: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=800&q=80',
       type: 'milestone',
       status: 'completed',
       icon: <Globe className="w-5 h-5" />
     },
     {
       year: '2024',
-      month: 'Feb',
-      day: '20',
       title: 'Sustainable Development Goals',
-      description: 'Currently implementing comprehensive sustainability programs and green initiatives.',
+      description: 'Currently implementing comprehensive sustainability programs and green initiatives for environmental conservation.',
+      image: 'https://images.unsplash.com/photo-1523712999610-f77fbcfc3843?auto=format&fit=crop&w=800&q=80',
       type: 'goal',
       status: 'in-progress',
       icon: <Star className="w-5 h-5" />
     },
     {
       year: '2025',
-      month: 'May',
-      day: '15',
       title: 'Digital Innovation Hub',
-      description: 'Planning to launch a digital platform connecting donors, volunteers, and beneficiaries.',
+      description: 'Planning to launch a digital platform connecting donors, volunteers, and beneficiaries for maximum impact.',
+      image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80',
       type: 'goal',
       status: 'planned',
       icon: <Target className="w-5 h-5" />
     },
     {
       year: '2026',
-      month: 'Aug',
-      day: '30',
       title: '50,000 Lives Impacted',
-      description: 'Our ambitious goal to directly impact 50,000 lives through our various programs.',
+      description: 'Our ambitious goal to directly impact 50,000 lives through our various programs and community initiatives.',
+      image: 'https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=800&q=80',
       type: 'goal',
       status: 'planned',
       icon: <Heart className="w-5 h-5" />
@@ -173,16 +166,25 @@ const Mission = () => {
                   {/* Mobile Layout */}
                   <div className="lg:hidden w-full">
                     <div className="flex items-center mb-4">
-                      <div className={`w-4 h-4 rounded-full ${getStatusColor(item.status)} border-4 border-white shadow-lg mr-4`}></div>
+                      <div className={`w-4 h-4 rounded-full ${getStatusColor(item.status)} border-4 border-white shadow-lg mr-4 flex-shrink-0`}></div>
                       <div className="bg-white rounded-lg shadow-md px-3 py-2 border">
-                        <div className="text-xs text-gray-500 uppercase font-semibold">{item.month}</div>
-                        <div className="text-lg font-bold text-gray-900">{item.day}</div>
-                        <div className="text-sm text-gray-600">{item.year}</div>
+                        <div className="text-2xl font-bold text-gray-900">{item.year}</div>
                       </div>
                     </div>
                     <div className="bg-white rounded-lg shadow-lg p-4 border ml-8">
-                      <h3 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h3>
-                      <p className="text-gray-600 text-sm leading-relaxed">{item.description}</p>
+                      <div className="flex flex-col sm:flex-row gap-4">
+                        <div className="flex-1">
+                          <h3 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h3>
+                          <p className="text-gray-600 text-sm leading-relaxed">{item.description}</p>
+                        </div>
+                        <div className="flex-shrink-0">
+                          <img 
+                            src={item.image} 
+                            alt={item.title}
+                            className="w-full sm:w-32 h-24 object-cover rounded-lg"
+                          />
+                        </div>
+                      </div>
                     </div>
                   </div>
 
@@ -190,8 +192,19 @@ const Mission = () => {
                   <div className={`hidden lg:block lg:w-5/12 ${index % 2 === 0 ? 'pr-8 text-right' : 'pl-8 text-left'}`}>
                     {index % 2 === 0 ? (
                       <div className="bg-white rounded-lg shadow-lg p-6 border">
-                        <h3 className="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
-                        <p className="text-gray-600 text-sm leading-relaxed">{item.description}</p>
+                        <div className="flex items-start gap-4">
+                          <div className="flex-1">
+                            <h3 className="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
+                            <p className="text-gray-600 text-sm leading-relaxed">{item.description}</p>
+                          </div>
+                          <div className="flex-shrink-0">
+                            <img 
+                              src={item.image} 
+                              alt={item.title}
+                              className="w-24 h-24 object-cover rounded-lg"
+                            />
+                          </div>
+                        </div>
                       </div>
                     ) : null}
                   </div>
@@ -199,10 +212,8 @@ const Mission = () => {
                   {/* Central Date Circle - Desktop only */}
                   <div className="hidden lg:flex absolute left-1/2 transform -translate-x-1/2 flex-col items-center">
                     <div className={`w-4 h-4 rounded-full ${getStatusColor(item.status)} border-4 border-white shadow-lg z-10`}></div>
-                    <div className="mt-2 bg-white rounded-lg shadow-md px-3 py-2 text-center border">
-                      <div className="text-xs text-gray-500 uppercase font-semibold">{item.month}</div>
-                      <div className="text-2xl font-bold text-gray-900">{item.day}</div>
-                      <div className="text-sm text-gray-600">{item.year}</div>
+                    <div className="mt-2 bg-white rounded-lg shadow-md px-4 py-3 text-center border">
+                      <div className="text-2xl font-bold text-gray-900">{item.year}</div>
                     </div>
                   </div>
 
@@ -210,8 +221,19 @@ const Mission = () => {
                   <div className={`hidden lg:block lg:w-5/12 ${index % 2 === 1 ? 'pl-8 text-left' : 'pr-8 text-right'}`}>
                     {index % 2 === 1 ? (
                       <div className="bg-white rounded-lg shadow-lg p-6 border">
-                        <h3 className="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
-                        <p className="text-gray-600 text-sm leading-relaxed">{item.description}</p>
+                        <div className="flex items-start gap-4">
+                          <div className="flex-shrink-0">
+                            <img 
+                              src={item.image} 
+                              alt={item.title}
+                              className="w-24 h-24 object-cover rounded-lg"
+                            />
+                          </div>
+                          <div className="flex-1">
+                            <h3 className="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
+                            <p className="text-gray-600 text-sm leading-relaxed">{item.description}</p>
+                          </div>
+                        </div>
                       </div>
                     ) : null}
                   </div>
