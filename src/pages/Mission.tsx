@@ -8,6 +8,8 @@ import { Link } from 'react-router-dom';
 
 interface TimelineItem {
   year: string;
+  month: string;
+  day: string;
   title: string;
   description: string;
   type: 'milestone' | 'goal';
@@ -19,6 +21,8 @@ const Mission = () => {
   const timelineData: TimelineItem[] = [
     {
       year: '2020',
+      month: 'Jan',
+      day: '15',
       title: 'Foundation Established',
       description: 'Started our journey with a vision to create positive change in communities worldwide.',
       type: 'milestone',
@@ -27,6 +31,8 @@ const Mission = () => {
     },
     {
       year: '2021',
+      month: 'Mar',
+      day: '22',
       title: 'First Community Program',
       description: 'Launched our inaugural community outreach program, reaching 500 families in need.',
       type: 'milestone',
@@ -35,6 +41,8 @@ const Mission = () => {
     },
     {
       year: '2022',
+      month: 'Jun',
+      day: '08',
       title: 'Education Initiative',
       description: 'Expanded into education support, providing scholarships and learning resources.',
       type: 'milestone',
@@ -43,6 +51,8 @@ const Mission = () => {
     },
     {
       year: '2023',
+      month: 'Sep',
+      day: '12',
       title: 'Global Expansion',
       description: 'Extended our reach to 5 countries, impacting over 10,000 lives directly.',
       type: 'milestone',
@@ -51,6 +61,8 @@ const Mission = () => {
     },
     {
       year: '2024',
+      month: 'Feb',
+      day: '20',
       title: 'Sustainable Development Goals',
       description: 'Currently implementing comprehensive sustainability programs and green initiatives.',
       type: 'goal',
@@ -59,6 +71,8 @@ const Mission = () => {
     },
     {
       year: '2025',
+      month: 'May',
+      day: '15',
       title: 'Digital Innovation Hub',
       description: 'Planning to launch a digital platform connecting donors, volunteers, and beneficiaries.',
       type: 'goal',
@@ -67,6 +81,8 @@ const Mission = () => {
     },
     {
       year: '2026',
+      month: 'Aug',
+      day: '30',
       title: '50,000 Lives Impacted',
       description: 'Our ambitious goal to directly impact 50,000 lives through our various programs.',
       type: 'goal',
@@ -77,19 +93,10 @@ const Mission = () => {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'completed': return 'bg-green-100 text-green-800 border-green-200';
-      case 'in-progress': return 'bg-blue-100 text-blue-800 border-blue-200';
-      case 'planned': return 'bg-orange-100 text-orange-800 border-orange-200';
-      default: return 'bg-gray-100 text-gray-800 border-gray-200';
-    }
-  };
-
-  const getStatusText = (status: string) => {
-    switch (status) {
-      case 'completed': return 'Completed';
-      case 'in-progress': return 'In Progress';
-      case 'planned': return 'Planned';
-      default: return 'Unknown';
+      case 'completed': return 'bg-green-500';
+      case 'in-progress': return 'bg-blue-500';
+      case 'planned': return 'bg-orange-500';
+      default: return 'bg-gray-500';
     }
   };
 
@@ -116,12 +123,10 @@ const Mission = () => {
         <div className="text-center max-w-4xl mx-auto mb-16">
           <h1 className="text-5xl font-bold text-gray-900 mb-6 leading-tight">
             Our Mission & 
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-red-600"> Goals</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-red-600"> Timeline</span>
           </h1>
           <p className="text-xl text-gray-600 leading-relaxed mb-8">
-            We believe in creating lasting change through compassionate action, sustainable development, 
-            and community empowerment. Our journey is marked by meaningful milestones and ambitious goals 
-            that drive us forward.
+            WOW...!!! WHAT A JOURNEY SO FAR...!!!
           </p>
           <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-500">
             <div className="flex items-center space-x-2">
@@ -146,7 +151,7 @@ const Mission = () => {
               <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-orange-500 to-red-500 rounded-full mb-6">
                 <Heart className="w-8 h-8 text-white" />
               </div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Mission</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Company Milestone</h2>
               <p className="text-lg text-gray-700 leading-relaxed italic">
                 "To empower communities worldwide through sustainable development initiatives, 
                 education support, and compassionate action, creating lasting positive impact 
@@ -157,46 +162,49 @@ const Mission = () => {
         </Card>
 
         {/* Timeline Section */}
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">Our Journey & Future Goals</h2>
-          
+        <div className="max-w-6xl mx-auto">
           <div className="relative">
-            {/* Timeline Line */}
-            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-green-400 via-blue-400 to-orange-400"></div>
+            {/* Central Timeline Line */}
+            <div className="absolute left-1/2 transform -translate-x-0.5 h-full w-0.5 bg-gray-300"></div>
             
             {/* Timeline Items */}
-            <div className="space-y-8">
+            <div className="space-y-12">
               {timelineData.map((item, index) => (
-                <div key={index} className="relative flex items-start space-x-6">
-                  {/* Timeline Dot */}
-                  <div className={`relative z-10 flex items-center justify-center w-16 h-16 rounded-full border-4 border-white shadow-lg ${
-                    item.status === 'completed' ? 'bg-green-400' :
-                    item.status === 'in-progress' ? 'bg-blue-400' : 'bg-orange-400'
-                  }`}>
-                    <div className="text-white">
-                      {item.icon}
-                    </div>
-                  </div>
-                  
-                  {/* Content Card */}
-                  <Card className="flex-1 shadow-md hover:shadow-lg transition-shadow duration-300 bg-white/90 backdrop-blur-sm">
-                    <CardContent className="p-6">
-                      <div className="flex items-start justify-between mb-3">
-                        <div>
-                          <div className="flex items-center space-x-3 mb-2">
-                            <Badge variant="outline" className="text-sm font-semibold text-gray-600 border-gray-300">
-                              {item.year}
-                            </Badge>
-                            <Badge className={getStatusColor(item.status)}>
-                              {getStatusText(item.status)}
-                            </Badge>
-                          </div>
+                <div key={index} className={`relative flex items-center ${index % 2 === 0 ? 'justify-start' : 'justify-end'}`}>
+                  {/* Timeline Content */}
+                  <div className={`w-5/12 ${index % 2 === 0 ? 'pr-8 text-right' : 'pl-8 text-left'}`}>
+                    {index % 2 === 0 ? (
+                      // Left side content
+                      <div className="bg-white rounded-lg shadow-lg p-6 border">
+                        <div className="mb-4">
                           <h3 className="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
+                          <p className="text-gray-600 text-sm leading-relaxed">{item.description}</p>
                         </div>
                       </div>
-                      <p className="text-gray-600 leading-relaxed">{item.description}</p>
-                    </CardContent>
-                  </Card>
+                    ) : null}
+                  </div>
+
+                  {/* Central Date Circle */}
+                  <div className="absolute left-1/2 transform -translate-x-1/2 flex flex-col items-center">
+                    <div className={`w-4 h-4 rounded-full ${getStatusColor(item.status)} border-4 border-white shadow-lg z-10`}></div>
+                    <div className="mt-2 bg-white rounded-lg shadow-md px-3 py-2 text-center border">
+                      <div className="text-xs text-gray-500 uppercase font-semibold">{item.month}</div>
+                      <div className="text-2xl font-bold text-gray-900">{item.day}</div>
+                      <div className="text-sm text-gray-600">{item.year}</div>
+                    </div>
+                  </div>
+
+                  {/* Right side content */}
+                  <div className={`w-5/12 ${index % 2 === 1 ? 'pl-8 text-left' : 'pr-8 text-right'}`}>
+                    {index % 2 === 1 ? (
+                      <div className="bg-white rounded-lg shadow-lg p-6 border">
+                        <div className="mb-4">
+                          <h3 className="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
+                          <p className="text-gray-600 text-sm leading-relaxed">{item.description}</p>
+                        </div>
+                      </div>
+                    ) : null}
+                  </div>
                 </div>
               ))}
             </div>
