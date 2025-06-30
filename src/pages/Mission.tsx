@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { ArrowRight, Heart, Users, Target, Globe, Star, Calendar } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
@@ -119,16 +118,16 @@ const Mission = () => {
       </div>
 
       {/* Hero Section */}
-      <div className="container mx-auto px-4 py-16">
-        <div className="text-center max-w-4xl mx-auto mb-16">
-          <h1 className="text-5xl font-bold text-gray-900 mb-6 leading-tight">
+      <div className="container mx-auto px-4 py-8 lg:py-16">
+        <div className="text-center max-w-4xl mx-auto mb-8 lg:mb-16">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 lg:mb-6 leading-tight">
             Our Mission & 
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-red-600"> Timeline</span>
           </h1>
-          <p className="text-xl text-gray-600 leading-relaxed mb-8">
+          <p className="text-lg lg:text-xl text-gray-600 leading-relaxed mb-6 lg:mb-8">
             WOW...!!! WHAT A JOURNEY SO FAR...!!!
           </p>
-          <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-500">
+          <div className="flex flex-wrap justify-center gap-4 lg:gap-6 text-sm text-gray-500">
             <div className="flex items-center space-x-2">
               <div className="w-3 h-3 rounded-full bg-green-400"></div>
               <span>Completed Milestones</span>
@@ -145,14 +144,14 @@ const Mission = () => {
         </div>
 
         {/* Mission Statement */}
-        <Card className="max-w-4xl mx-auto mb-16 shadow-lg border-0 bg-white/80 backdrop-blur-sm">
-          <CardContent className="p-8">
+        <Card className="max-w-4xl mx-auto mb-8 lg:mb-16 shadow-lg border-0 bg-white/80 backdrop-blur-sm">
+          <CardContent className="p-6 lg:p-8">
             <div className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-orange-500 to-red-500 rounded-full mb-6">
-                <Heart className="w-8 h-8 text-white" />
+              <div className="inline-flex items-center justify-center w-12 h-12 lg:w-16 lg:h-16 bg-gradient-to-r from-orange-500 to-red-500 rounded-full mb-4 lg:mb-6">
+                <Heart className="w-6 h-6 lg:w-8 lg:h-8 text-white" />
               </div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Company Milestone</h2>
-              <p className="text-lg text-gray-700 leading-relaxed italic">
+              <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">Our Company Milestone</h2>
+              <p className="text-base lg:text-lg text-gray-700 leading-relaxed italic">
                 "To empower communities worldwide through sustainable development initiatives, 
                 education support, and compassionate action, creating lasting positive impact 
                 that transforms lives and builds a better future for all."
@@ -164,28 +163,41 @@ const Mission = () => {
         {/* Timeline Section */}
         <div className="max-w-6xl mx-auto">
           <div className="relative">
-            {/* Central Timeline Line */}
-            <div className="absolute left-1/2 transform -translate-x-0.5 h-full w-0.5 bg-gray-300"></div>
+            {/* Central Timeline Line - Hidden on mobile */}
+            <div className="absolute left-1/2 transform -translate-x-0.5 h-full w-0.5 bg-gray-300 hidden lg:block"></div>
             
             {/* Timeline Items */}
-            <div className="space-y-12">
+            <div className="space-y-8 lg:space-y-12">
               {timelineData.map((item, index) => (
-                <div key={index} className={`relative flex items-center ${index % 2 === 0 ? 'justify-start' : 'justify-end'}`}>
-                  {/* Timeline Content */}
-                  <div className={`w-5/12 ${index % 2 === 0 ? 'pr-8 text-right' : 'pl-8 text-left'}`}>
+                <div key={index} className={`relative flex flex-col lg:flex-row items-center ${index % 2 === 0 ? 'lg:justify-start' : 'lg:justify-end'}`}>
+                  {/* Mobile Layout */}
+                  <div className="lg:hidden w-full">
+                    <div className="flex items-center mb-4">
+                      <div className={`w-4 h-4 rounded-full ${getStatusColor(item.status)} border-4 border-white shadow-lg mr-4`}></div>
+                      <div className="bg-white rounded-lg shadow-md px-3 py-2 border">
+                        <div className="text-xs text-gray-500 uppercase font-semibold">{item.month}</div>
+                        <div className="text-lg font-bold text-gray-900">{item.day}</div>
+                        <div className="text-sm text-gray-600">{item.year}</div>
+                      </div>
+                    </div>
+                    <div className="bg-white rounded-lg shadow-lg p-4 border ml-8">
+                      <h3 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h3>
+                      <p className="text-gray-600 text-sm leading-relaxed">{item.description}</p>
+                    </div>
+                  </div>
+
+                  {/* Desktop Layout */}
+                  <div className={`hidden lg:block lg:w-5/12 ${index % 2 === 0 ? 'pr-8 text-right' : 'pl-8 text-left'}`}>
                     {index % 2 === 0 ? (
-                      // Left side content
                       <div className="bg-white rounded-lg shadow-lg p-6 border">
-                        <div className="mb-4">
-                          <h3 className="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
-                          <p className="text-gray-600 text-sm leading-relaxed">{item.description}</p>
-                        </div>
+                        <h3 className="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
+                        <p className="text-gray-600 text-sm leading-relaxed">{item.description}</p>
                       </div>
                     ) : null}
                   </div>
 
-                  {/* Central Date Circle */}
-                  <div className="absolute left-1/2 transform -translate-x-1/2 flex flex-col items-center">
+                  {/* Central Date Circle - Desktop only */}
+                  <div className="hidden lg:flex absolute left-1/2 transform -translate-x-1/2 flex-col items-center">
                     <div className={`w-4 h-4 rounded-full ${getStatusColor(item.status)} border-4 border-white shadow-lg z-10`}></div>
                     <div className="mt-2 bg-white rounded-lg shadow-md px-3 py-2 text-center border">
                       <div className="text-xs text-gray-500 uppercase font-semibold">{item.month}</div>
@@ -194,14 +206,12 @@ const Mission = () => {
                     </div>
                   </div>
 
-                  {/* Right side content */}
-                  <div className={`w-5/12 ${index % 2 === 1 ? 'pl-8 text-left' : 'pr-8 text-right'}`}>
+                  {/* Right side content - Desktop only */}
+                  <div className={`hidden lg:block lg:w-5/12 ${index % 2 === 1 ? 'pl-8 text-left' : 'pr-8 text-right'}`}>
                     {index % 2 === 1 ? (
                       <div className="bg-white rounded-lg shadow-lg p-6 border">
-                        <div className="mb-4">
-                          <h3 className="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
-                          <p className="text-gray-600 text-sm leading-relaxed">{item.description}</p>
-                        </div>
+                        <h3 className="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
+                        <p className="text-gray-600 text-sm leading-relaxed">{item.description}</p>
                       </div>
                     ) : null}
                   </div>
@@ -212,15 +222,15 @@ const Mission = () => {
         </div>
 
         {/* Call to Action */}
-        <div className="text-center mt-16">
+        <div className="text-center mt-8 lg:mt-16">
           <Card className="max-w-2xl mx-auto shadow-lg border-0 bg-gradient-to-r from-orange-500 to-red-500">
-            <CardContent className="p-8 text-white">
-              <h3 className="text-2xl font-bold mb-4">Join Our Mission</h3>
-              <p className="text-orange-100 mb-6 leading-relaxed">
+            <CardContent className="p-6 lg:p-8 text-white">
+              <h3 className="text-xl lg:text-2xl font-bold mb-4">Join Our Mission</h3>
+              <p className="text-orange-100 mb-6 leading-relaxed text-sm lg:text-base">
                 Be part of our journey to create positive change. Together, we can achieve our ambitious goals 
                 and make a lasting impact on communities worldwide.
               </p>
-              <Link to="/">
+              <Link to="/contribute">
                 <Button variant="secondary" size="lg" className="bg-white text-orange-600 hover:bg-orange-50">
                   Get Involved Today
                   <ArrowRight className="w-4 h-4 ml-2" />
