@@ -205,70 +205,33 @@ const JourneyTimeline = () => {
             </div>
           ))}
 
-          {/* Future Goals Section */}
-          <div className="relative flex items-start mt-12">
-            {/* Mobile layout */}
-            <div className="md:hidden flex items-start space-x-4 w-full">
-              <div className="flex flex-col items-center flex-shrink-0">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-r from-green-400 to-emerald-500 text-white flex items-center justify-center shadow-lg border-4 border-white z-10">
-                  <Sprout className="w-5 h-5" />
-                </div>
+          {/* Future Goals Section - Now Centered */}
+          <div className="relative flex justify-center mt-12">
+            <div className="flex flex-col items-center text-center">
+              <div className="w-12 h-12 rounded-full bg-gradient-to-r from-green-400 to-emerald-500 text-white flex items-center justify-center shadow-lg border-4 border-white z-10 mb-4">
+                <Sprout className="w-5 h-5" />
               </div>
               
-              <div className="flex-1">
-                <Badge variant="outline" className="bg-gradient-to-r from-green-500 to-emerald-500 text-white border-0 mb-3">
-                  {futureGoal.title}
-                </Badge>
-                <Card className="shadow-lg border-2 border-green-200 bg-gradient-to-br from-green-50 to-emerald-50">
-                  <CardContent className="p-4">
-                    <div className="space-y-3">
-                      {futureGoal.goals.map((goal, goalIndex) => (
-                        <div key={goalIndex} className="flex items-center space-x-3">
-                          <div className="text-green-600 flex-shrink-0">
-                            {goal.icon}
-                          </div>
-                          <span className="text-gray-700 font-medium text-sm">
-                            {goal.text}
-                          </span>
+              <Badge variant="outline" className="bg-gradient-to-r from-green-500 to-emerald-500 text-white border-0 mb-3">
+                {futureGoal.title}
+              </Badge>
+              
+              <Card className="shadow-lg border-2 border-green-200 bg-gradient-to-br from-green-50 to-emerald-50 max-w-md">
+                <CardContent className="p-6">
+                  <div className="space-y-3">
+                    {futureGoal.goals.map((goal, goalIndex) => (
+                      <div key={goalIndex} className="flex items-center justify-center space-x-3">
+                        <div className="text-green-600 flex-shrink-0">
+                          {goal.icon}
                         </div>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-            </div>
-
-            {/* Desktop layout */}
-            <div className="hidden md:flex items-center w-full">
-              <div className="w-5/12 pr-8 text-right">
-                <Badge variant="outline" className="bg-gradient-to-r from-green-500 to-emerald-500 text-white border-0 mb-3">
-                  {futureGoal.title}
-                </Badge>
-                <Card className="shadow-lg border-2 border-green-200 bg-gradient-to-br from-green-50 to-emerald-50">
-                  <CardContent className="p-6">
-                    <div className="space-y-3">
-                      {futureGoal.goals.map((goal, goalIndex) => (
-                        <div key={goalIndex} className="flex items-center justify-end space-x-3">
-                          <span className="text-gray-700 font-medium">
-                            {goal.text}
-                          </span>
-                          <div className="text-green-600 flex-shrink-0">
-                            {goal.icon}
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-              
-              <div className="flex justify-center w-2/12">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-r from-green-400 to-emerald-500 text-white flex items-center justify-center shadow-lg border-4 border-white z-10">
-                  <Sprout className="w-5 h-5" />
-                </div>
-              </div>
-              
-              <div className="w-5/12"></div>
+                        <span className="text-gray-700 font-medium">
+                          {goal.text}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
             </div>
           </div>
         </div>
