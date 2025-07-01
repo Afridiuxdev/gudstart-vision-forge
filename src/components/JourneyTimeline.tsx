@@ -12,6 +12,7 @@ interface TimelineEntry {
   color: string;
   bgColor: string;
   status: 'completed' | 'current' | 'future';
+  image: string;
 }
 
 const JourneyTimeline = () => {
@@ -23,7 +24,8 @@ const JourneyTimeline = () => {
       icon: <Heart className="w-5 h-5" />,
       color: 'text-orange-600',
       bgColor: 'bg-orange-100',
-      status: 'completed'
+      status: 'completed',
+      image: 'https://images.unsplash.com/photo-1593113630400-ea4288922497?w=300&h=200&fit=crop'
     },
     {
       year: '2016',
@@ -32,7 +34,8 @@ const JourneyTimeline = () => {
       icon: <Users className="w-5 h-5" />,
       color: 'text-green-600',
       bgColor: 'bg-green-100',
-      status: 'completed'
+      status: 'completed',
+      image: 'https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=300&h=200&fit=crop'
     },
     {
       year: '2021',
@@ -41,7 +44,8 @@ const JourneyTimeline = () => {
       icon: <Building className="w-5 h-5" />,
       color: 'text-purple-600',
       bgColor: 'bg-purple-100',
-      status: 'completed'
+      status: 'completed',
+      image: 'https://images.unsplash.com/photo-1577563908411-5077b6dc7624?w=300&h=200&fit=crop'
     },
     {
       year: '2023',
@@ -50,7 +54,8 @@ const JourneyTimeline = () => {
       icon: <Home className="w-5 h-5" />,
       color: 'text-blue-600',
       bgColor: 'bg-blue-100',
-      status: 'completed'
+      status: 'completed',
+      image: 'https://images.unsplash.com/photo-1466442929976-97f336a657be?w=300&h=200&fit=crop'
     },
     {
       year: '2025',
@@ -59,7 +64,8 @@ const JourneyTimeline = () => {
       icon: <Target className="w-5 h-5" />,
       color: 'text-emerald-600',
       bgColor: 'bg-emerald-100',
-      status: 'current'
+      status: 'current',
+      image: 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=300&h=200&fit=crop'
     }
   ];
 
@@ -117,6 +123,13 @@ const JourneyTimeline = () => {
                   </div>
                   <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
                     <CardContent className="p-4">
+                      <div className="mb-3">
+                        <img 
+                          src={entry.image} 
+                          alt={entry.title}
+                          className="w-full h-32 object-cover rounded-md"
+                        />
+                      </div>
                       <h3 className="font-bold text-gray-900 mb-2 leading-snug">
                         {entry.title}
                       </h3>
@@ -146,6 +159,13 @@ const JourneyTimeline = () => {
                       </div>
                       <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
                         <CardContent className="p-6">
+                          <div className="mb-4">
+                            <img 
+                              src={entry.image} 
+                              alt={entry.title}
+                              className="w-full h-40 object-cover rounded-md"
+                            />
+                          </div>
                           <h3 className="font-bold text-gray-900 mb-2 leading-snug text-right">
                             {entry.title}
                           </h3>
@@ -190,6 +210,13 @@ const JourneyTimeline = () => {
                       </div>
                       <Card className="shadow-md hover:shadow-lg transition-shadow duration-300">
                         <CardContent className="p-6">
+                          <div className="mb-4">
+                            <img 
+                              src={entry.image} 
+                              alt={entry.title}
+                              className="w-full h-40 object-cover rounded-md"
+                            />
+                          </div>
                           <h3 className="font-bold text-gray-900 mb-2 leading-snug">
                             {entry.title}
                           </h3>
@@ -205,7 +232,7 @@ const JourneyTimeline = () => {
             </div>
           ))}
 
-          {/* Future Goals Section - Now Centered */}
+          {/* Future Goals Section - Centered */}
           <div className="relative flex justify-center mt-12">
             <div className="flex flex-col items-center text-center">
               <div className="w-12 h-12 rounded-full bg-gradient-to-r from-green-400 to-emerald-500 text-white flex items-center justify-center shadow-lg border-4 border-white z-10 mb-4">
