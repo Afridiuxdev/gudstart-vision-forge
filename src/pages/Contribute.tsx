@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { ArrowRight, ShoppingCart, Package, CheckCircle, Shield, Heart, CreditCard, Truck, Share2, Sparkles } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -242,7 +241,7 @@ const Contribute = () => {
           <p className="text-center text-slate-600 text-lg mb-12 max-w-2xl mx-auto">
             Every item makes a difference in someone's life
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto">
             {essentialItems.map((item, index) => (
               <Card key={index} className="shadow-xl border-0 bg-white/80 backdrop-blur-sm hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 group overflow-hidden">
                 <CardHeader className="pb-4 relative">
